@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5^&k20yy9b=17_yi85-vufc^yu4y=&cfcwwa$wgkkco&%@$_k9'
+SECRET_KEY = 'zi=5&&u58!a!iuxsja#0-2r*v8-5r30h&b-ef(5^2il!u4olz2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media Files (Images)
+
+MEDIA_URL = '/shop/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'shop/media/')
