@@ -1,0 +1,29 @@
+{% extends 'shop/wrapper.html' %}
+{% load static %}
+{% block title%} Our Contact {% endblock %}
+{% block content %}
+<div class="contact-area d-flex align-items-center">
+    <div class="google-map">
+        <div id="googleMap"></div>
+    </div>
+    <div class="contact-info">
+        <h2>How to Find Us</h2>
+        <p>Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
+
+        <div class="contact-address mt-50">
+            <p><span>address:</span> 1337 Abaya, Almaty, KZ</p>
+            <p><span>telephone:</span> +7 777 666 5544</p>
+            <p><a href="mailto:contact@kiimn">contact@kiimn.kz</a></p>
+        </div>
+    </div>
+</div>
+<script>
+  function initMap() {
+    var uluru = {lat: 43.235189,  lng: 76.909868};
+    var map = new google.maps.Map(
+        document.getElementById('googleMap'), {zoom: 18, center: uluru});
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1pmgP9gRXBjdrMikj6OGOLo8urRUjn3o&callback=initMap"></script>
+{% endblock %}

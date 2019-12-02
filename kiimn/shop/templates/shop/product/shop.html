@@ -8,7 +8,7 @@
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="page-title text-center">
-                    <h2>{% if brand %}{{brand.name}}{% elif category %}{{category.gender}} - {{category.name}}{% else %}Shop{% endif %}</h2>
+                    <h2>{% if brand %}{{brand.name}}{% elif category %}{{category.gender}} - {{category.name}}{% elif keyword %}Search - {{keyword}}{% else %}Shop{% endif %}</h2>
                 </div>
             </div>
         </div>
@@ -104,11 +104,6 @@
                                       <img src="{% if prod.image_preview %}{{prod.image_preview.url}}{% else %}{% static "img/no-image.png" %}{% endif %}" alt="">
                                       <!-- Hover Thumb -->
                                       <img class="hover-img" src="{% if prod.image_hover %}{{prod.image_hover.url}}{% else %}{% static "img/no-image.png" %}{% endif %}" alt="">
-
-                                      <!-- Favourite -->
-                                      <div class="product-favourite">
-                                          <a href="#" class="favme fa fa-heart"></a>
-                                      </div>
                                   </div>
 
                                   <!-- Product Description -->
@@ -123,7 +118,8 @@
                                       <div class="hover-content">
                                           <!-- Add to Cart -->
                                           <div class="add-to-cart-btn">
-                                              <a href="/cart/add/{{prod.id}}" class="btn essence-btn">Add to Cart</a>
+
+                                                <a href="/shop/{{prod.id}}/{{prod.slug}}" class="btn essence-btn">Details</a>
                                           </div>
                                       </div>
                                   </div>

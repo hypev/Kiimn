@@ -20,16 +20,18 @@ shop_patterns = [
     path('', views.ProductList, name='ProductList'),
     path('category/<slug:slug>/', views.ProductList, name='ProductListByCategory'),
     path('brand/<slug:slug>/', views.ProductList, name='ProductListByBrand'),
+    path('<int:id>/<slug:slug>/', views.ProductDetail, name='ProductDetail')
 ]
 
 cart_patterns = [
-    path('add/<int:product_id>', views.CartAdd, name='CartAdd'),
-    path('remove/<int:product_id>', views.CartRemove, name='CartRemove')
+    path('add/<int:product_id>/', views.CartAdd, name='CartAdd'),
+    path('remove/<int:product_id>/', views.CartRemove, name='CartRemove')
 ]
 
 urlpatterns = [
     path('', views.LandingPage, name='LandingPage'),
     path('shop/', include(shop_patterns)),
     path('cart/', include(cart_patterns)),
-    path('shop/<int:id>/<slug:slug>/', views.ProductDetail, name='ProductDetail'),
+    path('search/', views.Search, name='Search'),
+    path('contact/', views.Contact, name='Contact')
 ]
