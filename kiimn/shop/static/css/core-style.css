@@ -888,18 +888,9 @@ img {
     .pagination .page-item .page-link:hover, .pagination .page-item .page-link:focus {
       color: #0315ff;
       box-shadow: none; }
-  .pagination .page-item:first-child {
-    margin-right: 15px; }
-    .pagination .page-item:first-child .page-link {
-      margin-left: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0; }
-  .pagination .page-item:last-child {
-    margin-left: 15px; }
-    .pagination .page-item:last-child .page-link {
-      margin-left: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0; }
+    .pagination .page-item.active .page-link {
+      color: #fff;
+      box-shadow: none; }
 
 /* :: 9.0 Brands Area CSS */
 .brands-area {

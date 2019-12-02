@@ -16,10 +16,20 @@ Including another URLconf
 from django.urls import path, re_path, include
 from . import views
 
+shop_patterns = [
+    path('', views.ProductList, name='ProductList'),
+    path('category/<slug:slug>/', views.ProductList, name='ProductListByCategory'),
+    path('brand/<slug:slug>/', views.ProductList, name='ProductListByBrand'),
+]
+
+cart_patterns = [
+    path('add/<int:product_id>', views.CartAdd, name='CartAdd'),
+    path('remove/<int:product_id>', views.CartRemove, name='CartRemove')
+]
+
 urlpatterns = [
     path('', views.LandingPage, name='LandingPage'),
-    path('shop/', views.ProductList, name='ProductList'),
-    path('shop/category/<slug:slug>/', views.ProductList, name='ProductListByCategory'),
-    path('shop/brand/<slug:slug>/', views.ProductList, name='ProductListByBrand'),
+    path('shop/', include(shop_patterns)),
+    path('cart/', include(cart_patterns)),
     path('shop/<int:id>/<slug:slug>/', views.ProductDetail, name='ProductDetail'),
 ]

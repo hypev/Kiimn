@@ -8,7 +8,7 @@
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="page-title text-center">
-                    <h2>dresses</h2>
+                    <h2>{% if brand %}{{brand.name}}{% elif category %}{{category.gender}} - {{category.name}}{% else %}Shop{% endif %}</h2>
                 </div>
             </div>
         </div>
@@ -26,119 +26,45 @@
                     <!-- ##### Single Widget ##### -->
                     <div class="widget catagory mb-50">
                         <!-- Widget Title -->
-                        <h6 class="widget-title mb-30">Catagories</h6>
+                        <h6 class="widget-title mb-30">Categories</h6>
 
-                        <!--  Catagories  -->
+                        <!--  Categories  -->
                         <div class="catagories-menu">
                             <ul id="menu-content2" class="menu-content collapse show">
                                 <!-- Single Item -->
-                                <li data-toggle="collapse" data-target="#clothing">
-                                    <a href="#">clothing</a>
+                                <li data-toggle="collapse" data-target="#clothing" class="collapsed">
+                                    <a href="#">brand</a>
                                     <ul class="sub-menu collapse show" id="clothing">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
+                                        <li><a href="/shop">All</a></li>
+                                        {% for br in all_b %}
+                                          <li><a href="/shop/brand/{{br.slug}}">{{br.name}}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </li>
                                 <!-- Single Item -->
                                 <li data-toggle="collapse" data-target="#shoes" class="collapsed">
-                                    <a href="#">shoes</a>
-                                    <ul class="sub-menu collapse" id="shoes">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
+                                    <a href="#">women</a>
+                                    <ul class="sub-menu collapse show" id="shoes">
+                                        <li><a href="/shop">All</a></li>
+                                        {% for cat in all_w %}
+                                            <li><a href="/shop/category/{{cat.slug}}">{{cat.name}}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </li>
                                 <!-- Single Item -->
                                 <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                    <a href="#">accessories</a>
-                                    <ul class="sub-menu collapse" id="accessories">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Bodysuits</a></li>
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                        <li><a href="#">Jackets &amp; Coats</a></li>
-                                        <li><a href="#">Jeans</a></li>
-                                        <li><a href="#">Pants &amp; Leggings</a></li>
-                                        <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                        <li><a href="#">Shirts &amp; Blouses</a></li>
-                                        <li><a href="#">Shirts</a></li>
-                                        <li><a href="#">Sweaters &amp; Knits</a></li>
+                                    <a href="#">men</a>
+                                    <ul class="sub-menu collapse show" id="accessories">
+                                        <li><a href="/shop">All</a></li>
+                                        {% for cat in all_m %}
+                                            <li><a href="/shop/category/{{cat.slug}}">{{cat.name}}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- ##### Single Widget ##### -->
-                    <div class="widget price mb-50">
-                        <!-- Widget Title -->
-                        <h6 class="widget-title mb-30">Filter by</h6>
-                        <!-- Widget Title 2 -->
-                        <p class="widget-title2 mb-30">Price</p>
-
-                        <div class="widget-desc">
-                            <div class="slider-range">
-                                <div data-min="49" data-max="360" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="49" data-value-max="360" data-label-result="Range:">
-                                    <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                </div>
-                                <div class="range-price">Range: $49.00 - $360.00</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ##### Single Widget ##### -->
-                    <div class="widget color mb-50">
-                        <!-- Widget Title 2 -->
-                        <p class="widget-title2 mb-30">Color</p>
-                        <div class="widget-desc">
-                            <ul class="d-flex">
-                                <li><a href="#" class="color1"></a></li>
-                                <li><a href="#" class="color2"></a></li>
-                                <li><a href="#" class="color3"></a></li>
-                                <li><a href="#" class="color4"></a></li>
-                                <li><a href="#" class="color5"></a></li>
-                                <li><a href="#" class="color6"></a></li>
-                                <li><a href="#" class="color7"></a></li>
-                                <li><a href="#" class="color8"></a></li>
-                                <li><a href="#" class="color9"></a></li>
-                                <li><a href="#" class="color10"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- ##### Single Widget ##### -->
-                    <div class="widget brands mb-50">
-                        <!-- Widget Title 2 -->
-                        <p class="widget-title2 mb-30">Brands</p>
-                        <div class="widget-desc">
-                            <ul>
-                                <li><a href="#">Asos</a></li>
-                                <li><a href="#">Mango</a></li>
-                                <li><a href="#">River Island</a></li>
-                                <li><a href="#">Topshop</a></li>
-                                <li><a href="#">Zara</a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -149,17 +75,17 @@
                             <div class="product-topbar d-flex align-items-center justify-content-between">
                                 <!-- Total Products -->
                                 <div class="total-products">
-                                    <p><span>186</span> products found</p>
+                                    <p><span>{{count}}</span> products found</p>
                                 </div>
                                 <!-- Sorting -->
                                 <div class="product-sorting d-flex">
                                     <p>Sort by:</p>
-                                    <form action="#" method="get">
+                                    <form action="">
                                         <select name="select" id="sortByselect">
-                                            <option value="value">Highest Rated</option>
-                                            <option value="value">Newest</option>
-                                            <option value="value">Price: $$ - $</option>
-                                            <option value="value">Price: $ - $$</option>
+                                            <option value="#">Newest</option>
+                                            <option value="#">Name</option>
+                                            <option value="#">Price: $$ - $</option>
+                                            <option value="#">Price: $ - $$</option>
                                         </select>
                                         <input type="submit" class="d-none" value="">
                                     </form>
@@ -169,57 +95,67 @@
                     </div>
 
                     <div class="row">
+                        {% for prod in products %}
+                          <!-- Single Product -->
+                          <div class="col-12 col-sm-6 col-lg-4">
+                              <div class="single-product-wrapper">
+                                  <!-- Product Image -->
+                                  <div class="product-img">
+                                      <img src="{% if prod.image_preview %}{{prod.image_preview.url}}{% else %}{% static "img/no-image.png" %}{% endif %}" alt="">
+                                      <!-- Hover Thumb -->
+                                      <img class="hover-img" src="{% if prod.image_hover %}{{prod.image_hover.url}}{% else %}{% static "img/no-image.png" %}{% endif %}" alt="">
 
-                        <!-- Single Product -->
-                        <div class="col-12 col-sm-6 col-lg-4">
-                            <div class="single-product-wrapper">
-                                <!-- Product Image -->
-                                <div class="product-img">
-                                    <img src="{% static "img/product-img/product-1.jpg" %}" alt="">
-                                    <!-- Hover Thumb -->
-                                    <img class="hover-img" src="{% static "img/product-img/product-2.jpg" %}" alt="">
+                                      <!-- Favourite -->
+                                      <div class="product-favourite">
+                                          <a href="#" class="favme fa fa-heart"></a>
+                                      </div>
+                                  </div>
 
-                                    <!-- Product Badge -->
-                                    <div class="product-badge offer-badge">
-                                        <span>-30%</span>
-                                    </div>
-                                    <!-- Favourite -->
-                                    <div class="product-favourite">
-                                        <a href="#" class="favme fa fa-heart"></a>
-                                    </div>
-                                </div>
+                                  <!-- Product Description -->
+                                  <div class="product-description">
+                                      <span>{{prod.brand}}</span>
+                                      <a href="/shop/{{prod.id}}/{{prod.slug}}">
+                                          <h6>{{prod.name}}</h6>
+                                      </a>
+                                      <p class="product-price">${{prod.price}}</p>
 
-                                <!-- Product Description -->
-                                <div class="product-description">
-                                    <span>topshop</span>
-                                    <a href="single-product-details.html">
-                                        <h6>Knot Front Mini Dress</h6>
-                                    </a>
-                                    <p class="product-price"><span class="old-price">$75.00</span> $55.00</p>
-
-                                    <!-- Hover Content -->
-                                    <div class="hover-content">
-                                        <!-- Add to Cart -->
-                                        <div class="add-to-cart-btn">
-                                            <a href="#" class="btn essence-btn">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                                      <!-- Hover Content -->
+                                      <div class="hover-content">
+                                          <!-- Add to Cart -->
+                                          <div class="add-to-cart-btn">
+                                              <a href="/cart/add/{{prod.id}}" class="btn essence-btn">Add to Cart</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- Pagination -->
                 <nav aria-label="navigation">
                     <ul class="pagination mt-50 mb-70">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">21</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                        {% if has_other %}
+                          {% if has_prev %}
+                            <li class="page-item"><a class="page-link" href="?page={{prev_page}}"><i class="fa fa-angle-left"></i></a></li>
+                          {% endif %}
+                          {% if has_prev %}
+                            {% if prev_page != 1 %}
+                              <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            {% endif %}
+                            <li class="page-item"><a class="page-link" href="?page={{prev_page}}">{{prev_page}}</a></li>
+                          {% endif %}
+                          <li class="page-item active"><a class="page-link">{{page}}</a></li>
+                          {% if has_next%}
+                            <li class="page-item"><a class="page-link" href="?page={{next_page}}">{{next_page}}</a></li>
+                            {% if next_page != pages_count %}
+                              <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            {% endif %}
+                          {% endif %}
+                          {% if has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{next_page}}"><i class="fa fa-angle-right"></i></a></li>
+                          {% endif %}
+                        {% endif %}
                     </ul>
                 </nav>
             </div>

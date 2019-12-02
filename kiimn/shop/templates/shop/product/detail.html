@@ -7,8 +7,9 @@
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
         <div class="product_thumbnail_slides owl-carousel">
-            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-image.png" %}{% endif %}" alt="">
-            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-image.png" %}{% endif %}" alt="">
+            {% for img in images %}
+              <img src="{{img.image.url}}" alt="">
+            {% endfor %}
         </div>
     </div>
     <!-- Single Product Description -->
@@ -36,7 +37,7 @@
             <!-- Cart & Favourite Box -->
             <div class="cart-fav-box d-flex align-items-center">
                 <!-- Cart -->
-                <button type="submit" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                <a href="/cart/add/{{product.id}}" class="btn essence-btn">Add to cart</a>
                 <!-- Favourite -->
                 <div class="product-favourite ml-4">
                     <a href="#" class="favme fa fa-heart"></a>
