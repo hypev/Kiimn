@@ -109,7 +109,9 @@ def Contact(request):
         'cart_len': len(Cart(request))
     })
 
-def CartAdd(request, product_id, color="Specify", size="Specify"):
+def CartAdd(request, product_id):
+    color = request.POST.get('color', None)
+    size = request.POST.get('size', None)
     Cart(request).add(product=get_object_or_404(Product, id=product_id), color=color, size=size)
     return redirect(request.META.get('HTTP_REFERER'))
 

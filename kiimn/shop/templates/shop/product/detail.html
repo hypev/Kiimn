@@ -20,16 +20,16 @@
         <p class="product-price">${{ product.price }}</p>
         <p class="product-desc">{{ product.description }}</p>
         <!-- Form -->
-        <form action="/cart/add/{{product.id}}" class="cart-form clearfix" method="post">
+        <form action="{% url "shop:CartAdd" product.id %}" class="cart-form clearfix" method="post">
             {% csrf_token %}
             <!-- Select Box -->
             <div class="select-box d-flex mt-50 mb-30">
-                <select name="size_select" id="productSize" class="mr-5">
+                <select title="size" name="size" id="size" class="mr-5">
                   {% for size in sizes %}
                     <option value="{{size}}">Size: {{ size }}</option>
                   {% endfor %}
                 </select>
-                <select name="color_select" id="productColor">
+                <select title="color" name="color" id="color">
                   {% for color in colors %}
                     <option value="{{color}}">Color: {{ color }}</option>
                   {% endfor %}
@@ -37,7 +37,7 @@
             </div>
             <!-- Cart -->
             <div class="cart-fav-box d-flex align-items-center">
-                <a href="/cart/add/{{product.id}}/" class="btn essence-btn">Add to cart</a>
+                <input class="btn essence-btn" type="submit" value="Add to cart">
             </div>
         </form>
     </div>

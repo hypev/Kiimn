@@ -119,13 +119,10 @@
                   {% if cart_len != 0 %}
                     <h2>Summary</h2>
                     <ul class="summary-table">
-                        <li><span>subtotal:</span> <span>${{cart.get_price}}</span></li>
-                        <li><span>delivery:</span> <span>{% if cart.get_price > 10 and cart.get_price < 70 %}$3{% else %}Free{% endif %}</span></li>
-                        <!-- <li><span>discount:</span> <span>-15%</span></li> -->
-                        <li><span>total:</span> <span>${% if cart.get_price > 10 and cart.get_price < 70 %}{{cart.get_total_price}}{% else %}{{cart.get_price}}{% endif %}</span></li>
+                        <li><span>total:</span> <span>${{cart.get_total_price}}</span></li>
                     </ul>
                     <div class="checkout-btn mt-100">
-                        <a href="checkout.html" class="btn essence-btn">check out</a>
+                        <a href="{% url "orders:OrderCreate" %}" class="btn essence-btn">check out</a>
                     </div>
                   {% else %}
                     <h1>Cart is empty</h1>
