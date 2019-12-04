@@ -96,7 +96,7 @@ urlpatterns = [
     path('contact/', views.Contact, name='Contact')
 ]
 ```
-**In the `orders` app `urls.py`:
+**In the `orders` app `urls.py`**:
 ```
 urlpatterns = [
     path('create/', views.OrderCreate, name='OrderCreate')
@@ -110,7 +110,7 @@ urlpatterns = [
     path('canceled/', views.PaymentCanceled, name='canceled')
 ]
 ```
-**In the `cupons` app `urls.py`:
+**In the `cupons` app `urls.py`**:
 ```
 urlpatterns = [
     path('apply', views.CuponApply, name='apply')
@@ -167,14 +167,14 @@ class Category(models.Model):
     image = models.ImageField(upload_to = 'categories/', blank = True, verbose_name = "Template Image")
     slug = models.SlugField(max_length = 70, db_index = True)
 ```
-** `shop.models.Brand` **
+**`shop.models.Brand`**
 ```
 class Brand(models.Model):
     name = models.CharField(max_length = 20, db_index = True, verbose_name = "Name")
     slug = models.SlugField(max_length = 50, db_index = True)
     image = models.ImageField(upload_to = 'brands/', blank = True, verbose_name = "Logo")
 ```
-**'orders.models.Order`**
+**`orders.models.Order`**
 ```
 class Order(models.Model):
     first_name = models.CharField(verbose_name='First Name', max_length=50)
@@ -192,7 +192,7 @@ class Order(models.Model):
     discount = models.IntegerField(default=0, validators=[MinValueValidator(0),
                                                           MaxValueValidator(100)])
 ```
-**'orders.models.OrderItem'**
+**`orders.models.OrderItem`**
 ```
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
