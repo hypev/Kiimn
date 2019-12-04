@@ -32,7 +32,7 @@ def OrderCreate(request):
             return redirect(reverse('payment:process'))
 
     form = OrderCreateForm()
-    return render(request, 'orders/order/create.html', {'w_categories': Category.objects.filter(gender='Women').order_by('-name')[0:8],
+    return render(request, 'orders/create.html', {'w_categories': Category.objects.filter(gender='Women').order_by('-name')[0:8],
                                                         'm_categories': Category.objects.filter(gender='Men').order_by('-name')[0:8],
                                                         'brands': Brand.objects.order_by('-name')[0:8],
                                                         'cart': Cart(request),
