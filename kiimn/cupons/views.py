@@ -13,8 +13,7 @@ def CuponApply(request):
         try:
             cupon = Cupon.objects.get(code__iexact=code,
                                       valid_from__lte=now,
-                                      valid_to__gte=now,
-                                      active=True)
+                                      valid_to__gte=now)
             request.session['cupon_id'] = cupon.id
         except Cupon.DoesNotExist:
             request.session['cupon_id'] = None

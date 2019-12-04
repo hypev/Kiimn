@@ -26,8 +26,7 @@ def OrderCreate(request):
                 product.stock -= 1
                 if product.stock is 0:
                     product.available = False
-                product.save()
-
+                    product.save()
             Cart(request).clear()
             request.session['order_id'] = order.id
             return redirect(reverse('payment:process'))

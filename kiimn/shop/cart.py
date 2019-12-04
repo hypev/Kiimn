@@ -2,6 +2,8 @@ from django.conf import settings
 from shop.models import Product
 from decimal import Decimal
 from cupons.models import Cupon
+from django.utils import timezone
+
 
 class Cart(object):
     def __init__(self, request):
@@ -53,7 +55,9 @@ class Cart(object):
     @property
     def cupon(self):
         if self.cupon_id:
-            return Cupon.objects.get(id=self.cupon_id)
+            cupon = Cupon.objects.get(id=self.cupon_id)
+            if cupon.active:
+                return cupon
         return None
 
     def get_discount(self):

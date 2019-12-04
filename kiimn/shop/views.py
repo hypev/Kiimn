@@ -4,9 +4,11 @@ from django.urls import resolve
 from django.core.paginator import Paginator
 from .cart import Cart
 from cupons.forms import CuponApplyForm
+from cupons.models import Cupon
 
 def LandingPage(request):
     return render(request, 'shop/index.html', {
+        'cupon': Cupon.objects.order_by('-id')[0],
         'product': Product.objects.order_by('-id')[0],
         'categories': Category.objects.order_by('-id')[0:3],
         'products': Product.objects.order_by('-id').filter(available=True)[0:10],
@@ -21,7 +23,7 @@ def LandingPage(request):
 def ProductList(request, slug=None):
     category = None
     brand = None
-    products = Product.objects.filter(available=True)
+    products = Product.objects.filter(available=True).order_by('-updated')
     if slug:
         if resolve(request.path_info).url_name is "ProductListByCategory":
             category = get_object_or_404(Category, slug=slug)

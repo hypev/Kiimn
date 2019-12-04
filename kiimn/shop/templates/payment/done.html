@@ -1,6 +1,42 @@
 {% extends "shop/wrapper.html" %}
 {% block title %}Successful Transaction{% endblock %}
 {% block content %}
-  <h1>Successful Transaction</h1>
-  <p>Thanks to Shop!</p>
+<div class="checkout_area section-padding-80">
+    <div class="container">
+        <div class="row row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="order-details-confirmation">
+                    <div class="cart-page-heading">
+                        <h5>Your Order [Paid]</h5>
+                        <p>The Details of Order {{order.id}}</p>
+                    </div>
+                    <h6 class="text-center">Product list</h6>
+                    <ul class="order-details-form mb-4">
+                        <li><span>Product</span> <span>Total</span></li>
+                        {% for item in order.items.all  %}
+                          <li><span>{{item.product.name}}</span> <span>{{item.color}}</span> <span>{{item.size}}</span> <span>${{item.price|floatformat:"2"}}</span></li>
+                        {% endfor %}
+                        {% if cart.cupon %}
+                          <li><span>Cupon:</span> <span>{{cart.cupon.code}}</span> <span>-{{cart.cupon.discount}}%</li>
+                          <li><span>Total price with cupon:</span> <span>${{order.get_total_cost|floatformat:"2"}}</span></li>
+                        {% else %}
+                          <li><span>Total</span> <span>${{order.get_total_cost|floatformat:"2"}}</span></li>
+                        {% endif %}
+                    </ul>
+                    <h6 class="text-center">Personal Information</h6>
+                    <ul class="order-details-form mb-4">
+                      <li><span>Full name: {{order.first_name}} {{order.last_name}}</span> <span>Phone: {{order.phone}}</span> <span>Email: {{order.email}}</span></li>
+                      <li><span>City: {{order.city}}</span> <span>Province: {{order.province}}</span> <span>Address: {{order.address}}</span> <span>Postal code: {{order.postal_code}}</span></li>
+                    </ul>
+                    <h6 class="text-center">Instruction</h6>
+                    <p>You can save a screenshot of this receipt of payment to show our deliveryman.</p>
+                    <p>If you did not fill in the data correctly, you can call or email to us.</p>
+                    <a href="tel:77055537684">+7 (705) 553 7684</a><br>
+                    <a href="mailto:contact@kiimn.kz">contact@kiimn.kz</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

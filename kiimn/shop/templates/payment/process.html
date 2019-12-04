@@ -1,6 +1,40 @@
 {% extends "shop/wrapper.html" %}
-{% block title %}Payment PayPal{% endblock %}
+{% block title %}Created Order{% endblock %}
 {% block content %}
-  <h1>Payment Paypal</h1>
-  {{ form.render }}
+<div class="checkout_area section-padding-80">
+    <div class="container">
+        <div class="row row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="order-details-confirmation">
+                    <div class="cart-page-heading">
+                        <h5>Your Order [Not Paid]</h5>
+                        <p>The Details of Order {{order.id}}</p>
+                    </div>
+                    <h6 class="text-center">Product list</h6>
+                    <ul class="order-details-form mb-4">
+                        <li><span>Product</span> <span>Total</span></li>
+                        {% for item in order.items.all  %}
+                          <li><span>{{item.product.name}}</span> <span>{{item.color}}</span> <span>{{item.size}}</span> <span>${{item.price|floatformat:"2"}}</span></li>
+                        {% endfor %}
+                        {% if cart.cupon %}
+                          <li><span>Cupon:</span> <span>{{cart.cupon.code}}</span> <span>-{{cart.cupon.discount}}%</li>
+                          <li><span>Total price with cupon:</span> <span>${{order.get_total_cost|floatformat:"2"}}</span></li>
+                        {% else %}
+                          <li><span>Total</span> <span>${{order.get_total_cost|floatformat:"2"}}</span></li>
+                        {% endif %}
+                    </ul>
+                    <h6 class="text-center">Personal Information</h6>
+                    <ul class="order-details-form mb-4">
+                      <li><span>Full name: {{order.first_name}} {{order.last_name}}</span> <span>Phone: {{order.phone}}</span> <span>Email: {{order.email}}</span></li>
+                      <li><span>City: {{order.city}}</span> <span>Province: {{order.province}}</span> <span>Address: {{order.address}}</span> <span>Postal code: {{order.postal_code}}</span></li>
+                    </ul>
+                    <div class="text-center">
+                      {{form.render}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

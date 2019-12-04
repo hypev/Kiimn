@@ -21,16 +21,12 @@ def PaymentDone(request):
                                                 'brands': Brand.objects.order_by('-name')[0:8],
                                                 'cart': Cart(request),
                                                 'cart_len': len(Cart(request)),
-                                                'cupon_apply_form': CuponApplyForm()})
+                                                'cupon_apply_form': CuponApplyForm(),
+                                                'order': order})
 
 @csrf_exempt
 def PaymentCanceled(request):
-    return render(request, 'payment/canceled.html', {'w_categories': Category.objects.filter(gender='Women').order_by('-name')[0:8],
-                                                    'm_categories': Category.objects.filter(gender='Men').order_by('-name')[0:8],
-                                                    'brands': Brand.objects.order_by('-name')[0:8],
-                                                    'cart': Cart(request),
-                                                    'cart_len': len(Cart(request)),
-                                                    'cupon_apply_form': CuponApplyForm()})
+    return PaymentProcess(request)
 
 
 def PaymentProcess(request):
