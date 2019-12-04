@@ -24,7 +24,8 @@ SECRET_KEY = 'zi=5&&u58!a!iuxsja#0-2r*v8-5r30h&b-ef(5^2il!u4olz2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+]
 
 # Application definition
 
@@ -35,9 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field',
     'shop',
     'orders',
+    'paypal.standard.ipn',
+    'payment',
+    'cupons'
 ]
 
 MIDDLEWARE = [
@@ -114,6 +117,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
 # Media Files (Images)
@@ -124,3 +128,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'shop/media/')
 # Cart Session ID
 
 CART_SESSION_ID = 'cart'
+
+# PayPal
+PAYPAL_RECEIVER_EMAIL = 'kiimnstore@gmail.com'
+PAYPAL_TEST = True

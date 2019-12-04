@@ -1,0 +1,47 @@
+<html>
+  <body>
+    <h1>Kiimn - Fashion Cloting Store</h1>
+    <p>
+      Order ID: <b>{{ order.id }}</b> <br>
+      <span class="secondary">
+        {{ order.created }}
+      </span>
+    </p>
+    <h3>Customer</h3>
+    <p>
+      {{ order.first_name }} {{ order.last_name }}<br>
+      {{ order.email }} <br>
+      {{ order.phone }} <br>
+      {{ order.address }} <br>
+      {{ order.postal_code }}, {{ order.city }}
+    </p>
+    <h3>List of Items</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in order.items.all %}
+          <tr class="row{% cycle "1" "2" %}">
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.color }}</td>
+            <td>{{ item.size }}</td>
+            <td>{{ item.price }}</td>
+          </tr>
+        {% endfor %}
+        <tr class="total">
+          <td colspan="3">Total:</td>
+          <td class="num">{{ order.get_total_cost }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
+      {% if order.paid %}Paid{% else %}Pending{% endif %}
+    </span>
+  </body>
+</html>

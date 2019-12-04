@@ -3,12 +3,13 @@ from .models import Brand, Category, Product, ProductImage
 from django.urls import resolve
 from django.core.paginator import Paginator
 from .cart import Cart
+from cupons.forms import CuponApplyForm
 
 def LandingPage(request):
     return render(request, 'shop/index.html', {
         'product': Product.objects.order_by('-id')[0],
         'categories': Category.objects.order_by('-id')[0:3],
-        'products': Product.objects.order_by('-id')[0:10],
+        'products': Product.objects.order_by('-id').filter(available=True)[0:10],
         'bottom_brands': Brand.objects.order_by('-id')[0:6],
         'w_categories': Category.objects.filter(gender='Women').order_by('-name')[0:8],
         'm_categories': Category.objects.filter(gender='Men').order_by('-name')[0:8],

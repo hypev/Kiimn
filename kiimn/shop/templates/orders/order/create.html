@@ -1,0 +1,83 @@
+{% extends 'shop/wrapper.html' %}
+{% load static %}
+{% block title%} Our Contact {% endblock %}
+{% block content %}
+<!-- ##### Checkout Area Start ##### -->
+<div class="checkout_area section-padding-80">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-page-heading mb-30">
+                        <h5>Billing Address</h5>
+                    </div>
+
+                    <form action="." method="post">
+                        <div class="row">
+                            {% csrf_token %}
+                            <div class="col-md-6 mb-3">
+                                <label for="id_first_name">First Name <span>*</span></label>
+                                <input type="text" class="form-control" name="first_name" maxlength="50" required id="id_first_name">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="id_last_name">Last Name <span>*</span></label>
+                                <input type="text" class="form-control" name="last_name" maxlength="50" required id="id_last_name">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="id_address">Address <span>*</span></label>
+                                <input type="text" class="form-control" name="address" maxlength="250" required id="id_address">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="id_postal_code">Postcode <span>*</span></label>
+                                <input type="text" class="form-control" name="postal_code" maxlength="20" required id="id_postal_code">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="id_city">Town/City <span>*</span></label>
+                                <input type="text" class="form-control" name="city" maxlength="100" required id="id_city">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="id_province">Province <span>*</span></label>
+                                <input type="text" class="form-control" name="province" maxlength="100" required id="id_province">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="id_phone">Phone No <span>*</span></label>
+                                <input type="number" class="form-control" name="phone" maxlength="15" required id="id_phone">
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label for="id_email">Email Address <span>*</span></label>
+                                <input type="email" class="form-control" name="email" maxlength="254" required id="id_email">
+                            </div>
+                        </div>
+                        <input class="btn essence-btn" type="submit" value="Place Order">
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                <div class="order-details-confirmation">
+
+                    <div class="cart-page-heading">
+                        <h5>Your Order</h5>
+                        <p>The Details</p>
+                    </div>
+
+                    <ul class="order-details-form mb-4">
+                        <li><span>Product</span> <span>Total</span></li>
+                        {% for item in cart  %}
+                          <li><span>{{item.product.name}}</span> <span>{{item.color}}</span> <span>{{item.size}}</span> <span>${{item.price}}</span></li>
+                        {% endfor %}
+                        <li><span>Total</span> <span>${{cart.get_total_price}}</span></li>
+                        {% if cart.cupon %}
+                          <li><span>Cupon:</span> <span>{{cart.cupon.code}}</span> <span>-{{cart.cupon.discount}}%</li>
+                          <li><span>Total price with cupon:</span> <span>${{cart.get_total_price_after_discount|floatformat:"2"}}</span></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Checkout Area End ##### -->
+{% endblock%}

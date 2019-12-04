@@ -120,6 +120,19 @@
                     <h2>Summary</h2>
                     <ul class="summary-table">
                         <li><span>total:</span> <span>${{cart.get_total_price}}</span></li>
+                        {% if cart.cupon and cart.cupon.active %}
+                          <li><span>cupon:</span> <span>{{cart.cupon.code}}</span> <span>-{{cart.cupon.discount}}%</li>
+                          <li><span>total price with cupon:</span> <span>${{cart.get_total_price_after_discount|floatformat:"2"}}</span></li>
+                        {% else %}
+                          <form action="{% url "cupons:apply" %}" method="post" class="add">
+                            <li><span>cupon:</span></li>
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="code" required="" id="id_code">
+                            </div>
+                            <input class="btn essence-btn" type="submit" value="Check Cupon">
+                          </form>
+                        {% endif %}
                     </ul>
                     <div class="checkout-btn mt-100">
                         <a href="{% url "orders:OrderCreate" %}" class="btn essence-btn">check out</a>
