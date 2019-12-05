@@ -5,8 +5,18 @@ We are team `Golden Trio+` and our project `Kiimn` - Django based brand clothing
 - [Aselya Kasymzhanova](https://vk.com/aselya116)
 - [Temirlan Assanov](https://vk.com/rrrraaawww)
 - [Serikkhan Ugylan](https://vk.com/thesugylan)
+
+## Dependence
+1. `PIL` is the Python Imaging Library by Fredrik Lundh and Contributors.
+```
+pip install Pillow
+```
+2. `Django-PayPal` is the Payment System to Django Based Websites.
+```
+pip install django-paypal
+```
 # The BIG Question: Why we dont have a login/registration?
-  It's easy to explain. Because our Cart works with SESSION_ID which `key` is stores in our web-browser a long time ( default 5 weeks ).
+  It's easy to explain. Because our Cart works with SESSION_ID which `key` is stores in our web-browser a long time ( default 2 weeks ).
   So, if person needs to buy a clothe's to this period of year, we think they dont need to be a registered to site, only fill the forms   devlivery purpose.
 # Technical Part
 ## How works our website?
@@ -30,19 +40,10 @@ We are team `Golden Trio+` and our project `Kiimn` - Django based brand clothing
   3. Possibility add to Cart.
   4. We can choose the size and color, then add to cart
 ### In `Contact`:
-  'nothing interesting :? scroll next
+  `nothing interesting :? scroll next`
 ### In `Create Order`:
   Just collecting info from forms and inserting to DB.
 
-## Dependence
-1. `PIL` is the Python Imaging Library by Fredrik Lundh and Contributors.
-```
-pip install Pillow
-```
-2. `Django-PayPal` is the Payment System to Django Based Websites.
-```
-pip install django-paypal
-```
 ## Installed App's
 ```
 INSTALLED_APPS = [
@@ -210,3 +211,9 @@ class Cupon(models.Model):
     discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     active = models.BooleanField()
 ```
+# Audience of django-SHOP users
+Specifically, we aim at providing a clean, modular and Pythonic/Djangonic implementation of an e-commerce framework, that a moderately experienced Django developer should be able to pick up and run easily. Pure Django models are used to describe each product type, and so the Django admin shall be used to build a minimalistic editor for each of them.
+
+# Consultancy
+We provide full consultancy support and are available for building complete e-commerce systems based on django-SHOP. Please contact [hypevstore@gmail.com](mailto:hypevstore@gmail.com) for further questions.
+
