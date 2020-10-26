@@ -1,10 +1,7 @@
 # KIIMN
 We are team `Golden Trio+` and our project `Kiimn` - Django based brand clothing store.
 ## Team members
-- [Kurbanali Ruslan](https://vk.com/hypev)
-- [Aselya Kasymzhanova](https://vk.com/aselya116)
-- [Temirlan Assanov](https://vk.com/rrrraaawww)
-- [Serikkhan Ugylan](https://vk.com/thesugylan)
+- Kurbanali Ruslan
 
 ## Dependence
 1. `PIL` is the Python Imaging Library by Fredrik Lundh and Contributors.
