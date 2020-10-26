@@ -1,7 +1,5 @@
 # KIIMN
-We are team `Golden Trio+` and our project `Kiimn` - Django based brand clothing store.
-## Team members
-- Kurbanali Ruslan
+Team `Golden Trio+` and our project `Kiimn` - Django based brand clothing store.
 
 ## Dependence
 1. `PIL` is the Python Imaging Library by Fredrik Lundh and Contributors.
